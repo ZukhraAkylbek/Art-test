@@ -1,0 +1,8 @@
+{
+  "name": "Artwin Feedback Platform",
+  "description": "An intelligent feedback management system for Artwin employees, clients, and contractors, featuring AI-powered sentiment analysis and automated categorization.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
