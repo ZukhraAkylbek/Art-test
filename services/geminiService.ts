@@ -1,13 +1,10 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { FeedbackItem, AIAnalysis, Department, Urgency, FeedbackType } from "../types";
 
-const apiKey = process.env.API_KEY || '';
-const ai = new GoogleGenAI({ apiKey });
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export const analyzeFeedback = async (message: string, currentUrgency: string): Promise<AIAnalysis> => {
   try {
-    const model = ai.models;
-    
     // Schema for structured output
     const schema = {
       type: Type.OBJECT,
@@ -29,7 +26,7 @@ export const analyzeFeedback = async (message: string, currentUrgency: string): 
       Provide a brief summary, suggest an immediate action for the administrator, assess sentiment, and rate the actual urgency based on the content (1-10).
     `;
 
-    const response = await model.generateContent({
+    const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
       contents: prompt,
       config: {
